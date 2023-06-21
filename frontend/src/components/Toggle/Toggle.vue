@@ -14,17 +14,16 @@
   
   <script>
   export default {
-    name: "Switch",
-    props: {
-      label: {
-        type: String,
-        required: true,
-      },
-      checked: {
-        type: Boolean,
-        required: true,
-      },
-    },
+    name: "Toggle",
+    props: ['checked'],
+    data: () => ({
+   childChecked: 0
+  }),
+  created() {
+   // the prop needs to be re-assigned here. Vue doesn't like prop mutation
+   this.childChecked = this.checked
+  },
+    emits: ['update:checked']
   };
   </script>
   
